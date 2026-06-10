@@ -1,0 +1,244 @@
+:root {
+    --bg-color: #E4E9F6;
+    --color-green: #1db954;
+    --color-green_dark: #0e8043;
+    --title-color: #333;
+    --text-color: #666;
+    --shadow: rgba(0, 0, 0, 0.1);
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-color);
+}
+
+.header {
+    text-align: center;
+    background-color: white;
+    color: var(--color-green);
+    padding: 1em;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.15);
+    font-weight: 600;
+    font-size: 15px;
+    margin-bottom: 1em;
+}
+
+.search-container {
+    text-align: center;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.search-container select {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px;
+    flex-grow: 1;
+    max-width: 20em;
+}
+
+.search-container button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: var(--color-green);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.search-container button:hover {
+    background-color: var(--color-green_dark);
+}
+
+#loading {
+    display: none;
+    justify-content: center;
+}
+
+#loading i {
+    animation: spin 1s infinite linear;
+    font-size: 2em;
+}
+
+.song-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(15em, 1fr));
+    gap: 1em;
+    margin: 1em;
+}
+
+.info h5 {
+    margin: 0;
+}
+
+.info-card {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px var(--shadow);
+    padding: 20px;
+    display: flex;
+    text-decoration: none;
+    margin: 1.5em;
+}
+
+
+.info-card img {
+    width: 30%;
+    height: auto;
+}
+
+.info-card h2 {
+    color: var(--title-color);
+    font-size: 20px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.info-card p {
+    color: var(--text-color);
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.info-card p:last-child {
+    margin-bottom: 0;
+}
+
+.song-card {
+    position: relative;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px var(--shadow);
+    padding: 20px;
+    margin-bottom: 20px;
+
+}
+
+.song-card:hover {
+    transform: translateY(-5px);
+}
+
+.icon-link {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.icon-link i {
+    font-size: 24px;
+    color: var(--color-green);
+}
+
+.song-card h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 20px;
+    color: #343a40;
+}
+
+.song-card img {
+    max-width: 60%;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px var(--shadow);
+}
+
+option {
+    color: #333;
+}
+
+option[value=""] {
+    color: #999;
+}
+
+.footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    font-size: 0.9em;
+    background-color: white;
+    color: var(--color-green);
+    padding: 1em;
+    box-shadow: 8px 4px 4px 8px rgba(0, 0, 0, 0.15);
+    font-weight: 600;
+}
+
+a {
+    text-decoration: none;
+    color: var(--color-green)
+}
+
+/* Definir a animação de rotação */
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+#loading {
+    display: none;
+    justify-content: center;
+}
+
+/* Aplicar a animação ao ícone */
+#loading i {
+    animation: spin 1s infinite linear;
+    font-size: 2em;
+    color: var(--color-green);
+}
+
+
+/* Responsividade - Tablet */
+@media screen and (max-width: 1024px) {
+    .search-container {
+        flex-direction: column;
+        gap: 1em;
+    }
+
+    .fa-play {
+        font-size: 0.8em;
+        text-align: center;
+    }
+
+    .search-container select {
+        width: 20em;
+    }
+
+    .song-cards {
+        gap: 0;
+    }
+
+    .song-card {
+        display: flex;
+    }
+
+    .song-card img {
+        max-width: 40%;
+        margin-right: 1em;
+    }
+
+    .info {
+        margin-top: 1.2em;
+    }
+
+    .info-card {
+        flex-direction: column-reverse;
+        align-items: center;
+    }
+
+    .info-card img {
+        width: 70%;
+    }
+}

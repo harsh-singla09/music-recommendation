@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crown Player 🎧</title>
+    <link rel="shortcut icon" href="static/img/icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="static/style.css">
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to right, #0f0c29, #302b63, #24243e);
+            color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header Section */
+        .header {
+            background: url('static/img/music-bg.jpg') no-repeat center center/cover;
+            color: white;
+            text-align: center;
+            padding: 70px 20px;
+            border-radius: 0 0 50px 50px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+            position: relative;
+        }
+
+        .header h1 {
+            font-size: 3.8em;
+            margin: 0;
+            letter-spacing: 3px;
+            text-shadow: 4px 4px 12px rgba(0, 0, 0, 0.8);
+            animation: glow 1.5s infinite alternate;
+        }
+
+        @keyframes glow {
+            0% {
+                text-shadow: 0 0 15px #e94e77, 0 0 30px #f57d1f, 0 0 45px #e94e77;
+            }
+
+            100% {
+                text-shadow: 0 0 20px #f57d1f, 0 0 35px #e94e77, 0 0 50px #f57d1f;
+            }
+        }
+
+        /* Search Container */
+        .search-container {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        select,
+        button {
+            padding: 14px 18px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1em;
+        }
+
+        select {
+            background-color: #1f1f1f;
+            color: #f4f4f4;
+            border: 1px solid #e94e77;
+            transition: all 0.3s ease;
+        }
+
+        select:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 12px #f57d1f;
+        }
+
+        button {
+            background: linear-gradient(135deg, #e94e77, #f57d1f);
+            color: white;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+
+        button:hover {
+            transform: scale(1.1);
+            background: linear-gradient(135deg, #f57d1f, #e94e77);
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 15px #f57d1f;
+            }
+
+            50% {
+                box-shadow: 0 0 25px #e94e77, 0 0 40px #f57d1f;
+            }
+
+            100% {
+                box-shadow: 0 0 15px #f57d1f;
+            }
+        }
+
+        /* Loading Animation - Vinyl Record */
+        #loading {
+            display: none;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        #loading i {
+            font-size: 4em;
+            color: #e94e77;
+            animation: spin 1.5s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Song Cards Section */
+        .song-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .song-card {
+            background: linear-gradient(145deg, #1f1f1f, #292929);
+            border-radius: 20px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .song-card:hover {
+            transform: scale(1.05) rotateY(10deg);
+            box-shadow: 0 12px 30px rgba(255, 94, 98, 0.7);
+        }
+
+        .song-card img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin-bottom: 15px;
+            border: 5px solid #e94e77;
+        }
+
+        .song-card h3 {
+            font-size: 1.3em;
+            margin: 10px 0;
+            color: #f57d1f;
+        }
+
+        .song-card p {
+            color: #b1b1b1;
+        }
+
+        /* Info Card */
+        .info-card {
+            background: rgba(20, 20, 20, 0.95);
+            color: #f4f4f4;
+            padding: 40px 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+            margin-top: 50px;
+        }
+
+        .info-card h2 {
+            font-size: 2.5em;
+            color: #e94e77;
+            margin-bottom: 20px;
+        }
+
+        .info-card p {
+            font-size: 1.1em;
+            line-height: 1.8;
+            margin-bottom: 10px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .search-container {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .header h1 {
+                font-size: 2.8em;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <!-- Header Section -->
+        <div class="header">
+            <h1><i class="fa-solid fa-music"></i> Crown Player 🎧</h1>
+            <div class="search-container">
+                <select id="artistSelect" required>
+                    <option value="">🎤 Select Artist</option>
+                    {% for artist in artists %}
+                    <option value="{{ artist }}">{{ artist }}</option>
+                    {% endfor %}
+                </select>
+                <select id="songSelect" required>
+                    <option value="">🎵 Select Song</option>
+                    {% for song in songs %}
+                    <option value="{{ song }}">{{ song }}</option>
+                    {% endfor %}
+                </select>
+                <button onclick="recommend()"><i class="fa-solid fa-search"></i> SEARCH</button>
+            </div>
+        </div>
+
+        <!-- Loading Animation -->
+        <div id="loading">
+            <i class="fa-solid fa-compact-disc"></i> Loading...
+        </div>
+
+        <!-- Song Cards Section -->
+        <div class="song-cards">
+            <!-- Dynamically loaded song cards -->
+        </div>
+
+        <!-- Info Section -->
+        <div class="info-card">
+            <h2>🎧 Discover Your Next Favorite Song!</h2>
+            <p>Welcome to <strong>Crown Player</strong>! Dive into the world of music and get personalized song recommendations.</p>
+            <p>Select an artist and song to get recommendations tailored to your taste using our advanced music recommendation algorithm.</p>
+            <p>We analyze factors such as <strong>valence</strong>, <strong>energy</strong>, and <strong>danceability</strong> to suggest the best songs.</p>
+            <p>🎶 Enjoy a premium music experience with Crown Player!</p>
+        </div>
+    </div>
+
+    <script src="static/script.js"></script>
+    
+
+</body>
+
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recomendações de Músicas</title>
+    <link rel="shortcut icon" href="static/img/icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="static/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1><i class="fa-solid fa-play"></i> Recomendações de Músicas</h1>
+            <div class="search-container">
+                <select id="artistSelect" required>
+                    <option value="">Selecione o artista</option>
+                    {% for artist in artists %}
+                    <option value="{{ artist }}">{{ artist }}</option>
+                    {% endfor %}
+                </select>
+                <select id="songSelect" required>
+                    <option value="">Selecione a música</option>
+                </select>
+                <button onclick="recommend()">Pesquisar</button>
+            </div>
+        </div>
+
+        <div id="loading"><i class="fa-solid fa-compact-disc"></i></div>
+
+        <div class="song-cards">
+
+        </div>
+        <div class="info-card">
+            <div>
+                <h2>Descubra novas músicas!</h2>
+                <p>Selecione um artista que você gosta e uma música desse artista para receber recomendações
+                    personalizadas com base no seu gosto musical.</p>
+                <p>Nossas recomendações são feitas usando técnicas avançadas de machine learning. Quando você
+                    seleciona um artista e uma música, nosso algoritmo analisa uma variedade de fatores, como o
+                    valence (positividade da música), a acousticness (grau de acústico), a danceability (facilidade
+                    de dançar), a energia, a liveness (probabilidade de a música ter sido gravada ao vivo) e a
+                    speechiness (quantidade de palavras faladas versus cantadas) da música, entre outros.</p>
+                <p>Calculamos a similaridade entre a música selecionada e outras músicas no mesmo cluster usando
+                    distâncias euclidianas. Com base nessas similaridades, recomendamos as mais similares ao
+                    usuário.</p>
+                <p>Isso nos permite criar um perfil musical único para você e sugerir novas músicas que se encaixem
+                    perfeitamente com o que você gosta.</p>
+                <p>Utilizamos a API do Spotify para recuperar informações detalhadas sobre as músicas recomendadas,
+                    como nome da música, nome do artista, URL do Spotify e imagem do álbum.</p>
+                <p>Nosso objetivo é proporcionar uma experiência de descoberta musical personalizada e envolvente,
+                    ajudando você a encontrar novas músicas que se tornem suas novas favoritas.</p>
+            </div>
+            <img src="/static/img/Record player-rafiki.png" alt="Rapaz ouvindo música">
+        </div>
+
+        <!-- footer -->
+        <div class="footer">
+            <p>&copy; {{year}} Recomendações de Músicas. Todos os direitos reservados.</p>
+            <a href="https://github.com/christianduhp" target="_blank" aria-label="Github">
+                <i class="fa-brands fa-github"></i> Christian Oliveira
+            </a>
+        </div>
+
+        <script src="static/script.js"></script>
+</body>
+
+</html>
